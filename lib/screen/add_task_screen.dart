@@ -24,11 +24,11 @@ class AddTaskScreen extends StatelessWidget {
           ),
           TextButton(
             onPressed: () {},
-            child: Text('Add'),
             style: TextButton.styleFrom(
               backgroundColor: Colors.lightBlueAccent,
               foregroundColor: Colors.white,
             ),
+            child: const Text('Add'),
           ),
         ],
       ),

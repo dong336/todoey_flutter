@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:todoey_flutter/widget/task_check_box.dart';
 
-class TaskTile extends StatefulWidget {
-  const TaskTile({super.key});
+class TaskTile extends StatelessWidget {
+  final bool isChecked;
+  final String taskTile;
+  final Function(bool?) checkboxCallback;
 
-  @override
-  State<TaskTile> createState() => _TaskTileState();
-}
-
-class _TaskTileState extends State<TaskTile> {
-  bool isChecked = false;
+  const TaskTile({
+    super.key,
+    required this.isChecked,
+    required this.taskTile,
+    required this.checkboxCallback,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -20,13 +21,10 @@ class _TaskTileState extends State<TaskTile> {
           decoration: isChecked ? TextDecoration.lineThrough : null,
         ),
       ),
-      trailing: TaskCheckBox(
-        isChecked: isChecked,
-        toggleCheckboxState: (value) {
-          setState(() {
-            isChecked = value ?? false;
-          });
-        },
+      trailing: Checkbox(
+        activeColor: Colors.lightBlueAccent,
+        value: isChecked,
+        onChanged: checkboxCallback,
       ),
     );
   }
